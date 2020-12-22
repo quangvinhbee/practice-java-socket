@@ -39,6 +39,80 @@ public class Server {
             return false;
         }
     }
+    public static String Bai8(String str){
+        String output="Các phần tử là: ";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int[] a = new int[n];
+        for(int i=2;i<arrStr.length;i++){
+            a[i-2]=Integer.parseInt(arrStr[i]);
+        }
+        for(int i=0;i<n;i++){
+            int count = 0;
+            for(int j=0;j<n;j++){
+                if(a[i]==a[j]){
+                    count++;
+                }
+            }
+            if(count==2){
+                output+=a[i]+" ";
+                a[i]=a[i]+Integer.MIN_VALUE;
+            }
+        }
+        if(output.equals("")){
+            output="Không có phần tử nào";
+        }
+        return output;
+    }
+    public static String Bai7(String str){
+        String output="Các phần tử là: ";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int[] a = new int[n];
+        for(int i=2;i<arrStr.length;i++){
+            a[i-2]=Integer.parseInt(arrStr[i]);
+        }
+        for(int i=0;i<n;i++){
+            int count = 0;
+            for(int j=0;j<n;j++){
+                if(a[i]==a[j]){
+                    count++;
+                }
+            }
+            if(count==2){
+                output+=a[i]+" ";
+                a[i]=a[i]+Integer.MIN_VALUE;
+            }
+        }
+        if(output.equals("")){
+            output="Không có phần tử nào";
+        }
+        return output;
+    }
+    public static String Bai6(String str){
+        String output="";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int[] a = new int[n];
+        for(int i=2;i<arrStr.length;i++){
+            a[i-2]=Integer.parseInt(arrStr[i]);
+        }
+        for(int i=0;i<n;i++){
+            int count = 0;
+            for(int j=0;j<n;j++){
+                if(a[i]==a[j]){
+                    count++;
+                }
+            }
+            if(count==1){
+                output+=a[i]+" ";
+            }
+        }
+        if(output.equals("")){
+            output="Không có phần tử nào";
+        }
+        return output;
+    }
     public static String Bai5(String str){
         String output="";
         String[] arrStr = str.split("<br>");
@@ -130,6 +204,12 @@ public class Server {
             output=Bai4(str);
         }else if(arrStr[0].equals("5")){
             output=Bai5(str);
+        }else if(arrStr[0].equals("6")){
+            output=Bai6(str);
+        }else if(arrStr[0].equals("7")){
+            output=Bai7(str);
+        }else if(arrStr[0].equals("8")){
+            output=Bai8(str);
         }
         
             

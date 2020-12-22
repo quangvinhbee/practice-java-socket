@@ -17,6 +17,46 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
+    
+        public static String Bai8(){
+//          Bài 8: Nhập số liệu cho dãy số thực a0, a1,..., an-1. In ra màn hình số lần xuất hiện của các phần tử.
+            String str="";
+            System.out.println("Nhập số phần tử: ");
+            str+="8<br>";
+            int n = Input.input_int();
+            System.out.println("Nhập: ");
+            str+=n+"<br>";
+            for(int i=0; i<n; i++){
+                str+=Input.input_int()+"<br>";
+            }
+            return str;
+        }
+        public static String Bai7(){
+//          Bài 7: Nhập số liệu cho dãy số thực a0, a1,..., an-1. Hãy liệt kê các phần tử xuất hiện trong dãy đúng 2 lần. 
+            String str="";
+            System.out.println("Nhập số phần tử: ");
+            str+="7<br>";
+            int n = Input.input_int();
+            System.out.println("Nhập: ");
+            str+=n+"<br>";
+            for(int i=0; i<n; i++){
+                str+=Input.input_int()+"<br>";
+            }
+            return str;
+        }
+        public static String Bai6(){
+//          Bài 6: Nhập số liệu cho dãy số thực a0, a1,..., an-1. Hãy liệt kê các phần tử xuất hiện trong dãy đúng một lần. 
+            String str="";
+            System.out.println("Nhập số phần tử: ");
+            str+="6<br>";
+            int n = Input.input_int();
+            System.out.println("Nhập: ");
+            str+=n+"<br>";
+            for(int i=0; i<n; i++){
+                str+=Input.input_int()+"<br>";
+            }
+            return str;
+        }
         public static String Bai5(){
 //          Bài 5: Một số được gọi là số thuận nghịch độc nếu ta đọc từ trái sang phải hay từ phải sang trái số đó ta vẫn nhận được một số giống nhau. 
 //          Hãy liệt kê tất cả các số thuận nghịch độc có sáu chữ số (Ví dụ số: 336633). 
@@ -76,6 +116,6 @@ public class Client {
             return output;
         }
         public static void main(String[] args) {
-            System.out.println(TransferDataTCP(Bai5())); 
+            System.out.println(TransferDataTCP(Bai8())); 
         }
 }
