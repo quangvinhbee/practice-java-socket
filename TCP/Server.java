@@ -39,6 +39,63 @@ public class Server {
             return false;
         }
     }
+    public static String Bai11(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int a0=0 , a1=1, a2=1;
+        while(a2<n){
+            if(CheckNT(a2)){
+                output+=a2+" ";
+            }
+            int temp = a1+a2;
+            a1=a2;
+            a2=temp;
+            
+        }
+        
+        return output;
+    }
+    public static String Bai10(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int s = Integer.parseInt(arrStr[1]);
+        for(int  i=10000; i< 99999; i++){
+            if(CheckNT(i)){
+                int n = i;
+                int count = 0;
+                while(n>0){
+                    count+=n%10;
+                    n/=10;
+                }
+                if(count == s){
+                    output+=i+" ";
+                }
+            }
+        }
+        
+        return output;
+    }
+    public static String Bai9(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int count=0;
+        for (int i = 0; i < arrStr[1].length() - 1;) {
+            if (arrStr[1].charAt(i) == arrStr[1].charAt(i + 1) && arrStr[1].charAt(i)==' ') {
+                arrStr[1] = arrStr[1].substring(0, i) + arrStr[1].substring(i + 1);
+            } else {
+                i++;
+            }
+        }
+        for (int i = 0; i < arrStr[1].length() - 1; i++){
+            if(arrStr[1].charAt(i)==' '){
+                count ++ ;
+            }
+        }
+        count++;
+        
+        return output+=count;
+    }
     public static String Bai8(String str){
         String output="Các phần tử là: \n";
         String[] arrStr = str.split("<br>");
@@ -210,6 +267,12 @@ public class Server {
             output=Bai7(str);
         }else if(arrStr[0].equals("8")){
             output=Bai8(str);
+        }else if(arrStr[0].equals("9")){
+            output=Bai9(str);
+        }else if(arrStr[0].equals("10")){
+            output=Bai10(str);
+        }else if(arrStr[0].equals("11")){
+            output=Bai11(str);
         }
         
             

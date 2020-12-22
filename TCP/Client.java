@@ -17,7 +17,33 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
-    
+        public static String Bai11() throws IOException{
+//          Bài 11: Nhập một số tự nhiên n. Hãy liệt kê các số Fibonaci nhỏ hơn n là số nguyên tố. 
+            String str="";
+            System.out.println("Nhập n: ");
+            str+="11<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
+        public static String Bai10() throws IOException{
+//          Bài 10: Viết chương trình liệt kê tất cả các số nguyên tố có 5 chữ số sao cho tổng của các chữ số trong mỗi số nguyên tố đều bằng S cho trước. 
+            String str="";
+            System.out.println("Nhập S: ");
+            str+="10<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
+        public static String Bai9() throws IOException{
+//          Bài 9: Nhập một xâu ký tự. Đếm số từ của xâu ký tự đó. Thí dụ " Trường học " có 2 từ. 
+            String str="";
+            System.out.println("Nhập Chuỗi: ");
+            str+="9<br>";
+            str+=Input.input_String();
+            
+            return str;
+        }
         public static String Bai8(){
 //          Bài 8: Nhập số liệu cho dãy số thực a0, a1,..., an-1. In ra màn hình số lần xuất hiện của các phần tử.
             String str="";
@@ -115,7 +141,7 @@ public class Client {
             }
             return output;
         }
-        public static void main(String[] args) {
-            System.out.println(TransferDataTCP(Bai8())); 
+        public static void main(String[] args) throws IOException {
+            System.out.println(TransferDataTCP(Bai11())); 
         }
 }
