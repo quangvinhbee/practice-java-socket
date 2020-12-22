@@ -40,24 +40,24 @@ public class Server {
         }
     }
     public static String Bai8(String str){
-        String output="Các phần tử là: ";
+        String output="Các phần tử là: \n";
         String[] arrStr = str.split("<br>");
         int n = Integer.parseInt(arrStr[1]);
         int[] a = new int[n];
+        int[] b = new int[1000];
+        for(int i=0;i<1000;i++){
+            b[i]=0;
+        }
         for(int i=2;i<arrStr.length;i++){
             a[i-2]=Integer.parseInt(arrStr[i]);
         }
         for(int i=0;i<n;i++){
-            int count = 0;
-            for(int j=0;j<n;j++){
-                if(a[i]==a[j]){
-                    count++;
-                }
-            }
-            if(count==2){
-                output+=a[i]+" ";
-                a[i]=a[i]+Integer.MIN_VALUE;
-            }
+            b[a[i]]++;
+        }
+        for(int i=0;i<1000;i++){
+           if(b[i]!=0){
+               output+=i+" xuất hiện "+b[i]+"\n";
+           }
         }
         if(output.equals("")){
             output="Không có phần tử nào";
