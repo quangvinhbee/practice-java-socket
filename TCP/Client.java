@@ -17,6 +17,18 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
+        public static String Bai12() throws IOException{
+//          Bài 12: Viết chương trình nhập một số nguyên dương n và thực hiện các chức năng sau: 
+//          Tính tổng các chữ số của số nguyên dương.
+//          Phân tích n thành các thừa số nguyên tố.
+
+            String str="";
+            System.out.println("Nhập n: ");
+            str+="12<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
         public static String Bai11() throws IOException{
 //          Bài 11: Nhập một số tự nhiên n. Hãy liệt kê các số Fibonaci nhỏ hơn n là số nguyên tố. 
             String str="";
@@ -142,6 +154,6 @@ public class Client {
             return output;
         }
         public static void main(String[] args) throws IOException {
-            System.out.println(TransferDataTCP(Bai11())); 
+            System.out.println(TransferDataTCP(Bai12())); 
         }
 }

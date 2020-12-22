@@ -39,6 +39,41 @@ public class Server {
             return false;
         }
     }
+    public static String Bai12(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int m = n;
+        int total = 0;
+        while(m>0){
+            total+=m%10;
+            m/=10;
+        }
+        output+="Tổng là: "+total;
+        if(n==1){
+            output+="\nPhân tích số nguyên tố: "+1;
+        }
+        output+="\nPhân tích số nguyên tố: ";
+        while(n>1){
+            for(int i = 2 ; i<=n;i++){
+                if(CheckNT(i)){
+                    if(n%i==0){
+                        n=n/i;
+                        if(n==1){
+                            output+=i;
+                        }else{
+                            output+=i+"x";
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        return output;
+    }
     public static String Bai11(String str){
         String output="Kết quả là: \n";
         String[] arrStr = str.split("<br>");
@@ -273,6 +308,8 @@ public class Server {
             output=Bai10(str);
         }else if(arrStr[0].equals("11")){
             output=Bai11(str);
+        }else if(arrStr[0].equals("12")){
+            output=Bai12(str);
         }
         
             
