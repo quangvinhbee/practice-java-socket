@@ -17,6 +17,70 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
+        public static String Bai16() throws IOException{
+//        Bài 16: Viết chương trình nhập vào vào mảng A có n phần tử, các phần tử là những số nguyên lớn hơn 0 và nhỏ hơn 100 được nhập vào từ bàn phím. Thực hiện các chức năng sau:
+//        Tìm phần tử lớn nhất và lớn thứ 2 trong mảng cùng chỉ số của các số đó.
+//        Sắp xếp mảng theo thứ tự giảm dần.
+//        Nhập một số nguyên x và chèn x vào mảng A sao cho vẫn đảm bảo tính sắp xếp giảm dần.
+        
+
+            String str="";
+            str+="16<br>";
+            System.out.println("Nhập số phần tử: ");
+            int n=Input.input_int();
+            str+=n+"<br>";
+            for(int i=0; i<n ;i++){
+                str+=Input.input_int()+"<br>";
+            }
+            
+            return str;
+        }
+        public static String Bai15() throws IOException{
+//        Bài 15: Viết chương trình nhập vào vào ma trận A có n dòng, m cột, các phần tử là những số nguyên lớn hơn 0 và nhỏ hơn 100 được nhập vào từ bàn phím. Thực hiện các chức năng sau:
+//        Tìm phần tử lớn nhất của ma trận cùng chỉ số của số đó.
+//        Tìm và in ra các phần tử là số nguyên tố của ma trận (các phần tử không nguyên tố thì thay bằng số 0).
+//        Sắp xếp tất cả các cột của ma trận theo thứ tự tăng dần và in kết quả ra màn hình.
+
+            String str="";
+            str+="15<br>";
+            System.out.println("Nhập n: ");
+            int n=Input.input_int();
+            str+=n+"<br>";
+            System.out.println("Nhập m: ");
+            int m=Input.input_int();
+            str+=m+"<br>";
+            for(int i=0; i<n ;i++){
+                for(int j=0; j<m; j++){
+                    str+=Input.input_int()+"<br>";
+                }
+            }
+            
+            return str;
+        }
+        public static String Bai14() throws IOException{
+//        Bài 14: Viết chương trình nhập một số nguyên dương n và thực hiện các chức năng sau:
+//        Liệt kê n số nguyên tố đầu tiên.
+//        Liệt kê n số Fibonaci đầu tiên.
+            String str="";
+            System.out.println("Nhập n: ");
+            str+="14<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
+        public static String Bai13() throws IOException{
+//      Bài 13: Viết chương trình nhập một số nguyên dương n và thực hiện các chức năng sau:
+//      Liệt kê các ước số của n. Có bao nhiêu ước số.
+//      Liệt kê các ước số là nguyên tố của
+
+
+            String str="";
+            System.out.println("Nhập n: ");
+            str+="13<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
         public static String Bai12() throws IOException{
 //          Bài 12: Viết chương trình nhập một số nguyên dương n và thực hiện các chức năng sau: 
 //          Tính tổng các chữ số của số nguyên dương.
@@ -154,6 +218,6 @@ public class Client {
             return output;
         }
         public static void main(String[] args) throws IOException {
-            System.out.println(TransferDataTCP(Bai12())); 
+            System.out.println(TransferDataTCP(Bai16())); 
         }
 }

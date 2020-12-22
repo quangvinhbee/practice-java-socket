@@ -39,6 +39,123 @@ public class Server {
             return false;
         }
     }
+    public static String Bai16(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int[] arr = new int[n];
+        String temp="";
+        int max1 = 0,max2=0;
+        for(int i=0; i<n; i++){
+            arr[i]=Integer.parseInt(arrStr[i+2]);
+            if(arr[i]>max1){
+                max1=arr[i];
+            }
+            if(arr[i]<max1&& arr[i]>max2){
+                max2=arr[i];
+                temp=arr[i]+"["+i+"]";
+            }
+        }
+        output+="\nSố lớn hai trong mảng là: "+temp;
+        
+        return output;
+    }
+    public static String Bai15(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        int m = Integer.parseInt(arrStr[2]);
+        int[][] arr = new int[n][m];
+        String temp="";
+        int max = 0;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                arr[i][j] = Integer.parseInt(arrStr[m*i+j+3]);
+                if(arr[i][j]>max){
+                    max = arr[i][j];
+                    temp = arr[i][j]+"["+i+"]"+"["+j+"]";
+                }
+            }
+        }
+        output+="\nSố lớn nhất trong mảng nxm là: "+temp;
+        output+="\nMa trận các số nguyên tố:\n";
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(CheckNT(arr[i][j])){
+                    output+=arr[i][j]+" ";
+                }else{
+                    output+=0+" ";
+                }
+            }
+            output+="\n";
+        }
+        
+        output+="\nMa trận sau khi sắp xếp:\n";
+        for(int j=0 ; j<m ; j++){
+           for(int i=1 ; i<n ; i++){
+              if(arr[i-1][j]>arr[i][j]){
+                  int temp1 = arr[i-1][j]; 
+                 arr[i-1][j]= arr[i][j];
+                 arr[i][j]= temp1;
+
+              }
+            }
+          }
+            for(int i=0; i<n; i++){
+                for(int j=0; j<m; j++){
+                    output+=arr[i][j]+" ";
+                }
+                output+="\n";
+            }
+        return output;
+    }
+    public static String Bai14(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        output+="Số nguyên tố nhỏ hơn n là: ";
+        int count = 0;
+        int so=2;
+        while(count<=n){
+            if(CheckNT(so)){
+                count++;
+                output+=so+" ";
+            }
+            so++;
+        }
+        output+="\nn số Fibonacci: ";
+        int a0=0 , a1=1, a2=1;
+        count = 0;
+        while(count<=n){
+            output+=a2+" ";
+            int temp = a1+a2;
+            a1=a2;
+            a2=temp;
+            count++;
+        }
+        return output;
+    }
+    public static String Bai13(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        int n = Integer.parseInt(arrStr[1]);
+        output+="Ước của n là: ";
+        int count = 0 ;
+        for(int i=1; i<=n;i++){
+            if(n%i==0){
+                output+= i +" ";
+                count++;
+            }
+        }
+        output+="\nTổng số ước là: " +count;
+        output+="\nƯớc nguyên tố của n là: ";
+        for(int i=1; i<=n;i++){
+            if(n%i==0 && CheckNT(i)){
+                output+= i +" ";
+            }
+        }
+        return output;
+    }
     public static String Bai12(String str){
         String output="Kết quả là: \n";
         String[] arrStr = str.split("<br>");
@@ -310,6 +427,14 @@ public class Server {
             output=Bai11(str);
         }else if(arrStr[0].equals("12")){
             output=Bai12(str);
+        }else if(arrStr[0].equals("13")){
+            output=Bai13(str);
+        }else if(arrStr[0].equals("14")){
+            output=Bai14(str);
+        }else if(arrStr[0].equals("15")){
+            output=Bai15(str);
+        }else if(arrStr[0].equals("16")){
+            output=Bai16(str);
         }
         
             
