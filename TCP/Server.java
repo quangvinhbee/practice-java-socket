@@ -6,6 +6,8 @@ import java.io.IOException;
 import static java.lang.Math.sqrt;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,24 +41,102 @@ public class Server {
             return false;
         }
     }
+    public static String Bai19(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        StringTokenizer strToken= new StringTokenizer(arrStr[1]," ,\t,\r"); 
+        String ho = strToken.nextToken();
+        String hoDem = strToken.nextToken(); 
+        String ten = strToken.nextToken();
+        String strOutput= ten+" "+ho+" "+hoDem;
+        output+="Chuỗi sau khi đổi vị trí là: "+strOutput;
+        return output;
+    }
+    public static String Bai18(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        StringTokenizer strToken= new StringTokenizer(arrStr[1]," ,\t,\r"); 
+              int Max,i=1,lengthStr;
+                Max= strToken.nextToken().length(); 
+                int viTriMax= i; 
+                String StrMax="";
+               while(strToken.hasMoreTokens()){
+                   StrMax=strToken.nextToken();
+                lengthStr= strToken.nextToken().length(); 
+                i++;
+                if(Max < lengthStr){
+                Max = lengthStr; 
+                       viTriMax= i;
+                  }
+             }
+        output+="Do dai xau lon nhat la: "+StrMax+" o vi tri "+viTriMax;
+        return output;
+    }
+    public static String Bai17(String str){
+        String output="Kết quả là: \n";
+        String[] arrStr = str.split("<br>");
+        for (int i = 0; i < arrStr[1].length() - 1;) {
+            if (arrStr[1].charAt(i) == arrStr[1].charAt(i + 1) && arrStr[1].charAt(i)==' ') {
+                arrStr[1] = arrStr[1].substring(0, i) + arrStr[1].substring(i + 1);
+            } else {
+                i++;
+            }
+        }
+        char k;
+        
+        char[] arr = arrStr[1].toCharArray();
+        arrStr[1] ="";
+        arrStr[1]+=Character.toUpperCase(arr[0]);
+        for(int i=1; i<arr.length; i++){
+            arr[i] = Character.toLowerCase(arr[i]);
+        }
+        for(int i=1; i<arr.length; i++){
+            if(arr[i]!=' ' && arr[i-1]==' '){
+                arr[i] = Character.toUpperCase(arr[i]);
+            }
+        }
+        for(int i=1; i<arr.length; i++){
+            arrStr[1]+=arr[i]; 
+        }
+        output+="Chuỗi sau khi chuẩn hóa: "+arrStr[1];
+        return output;
+    }
     public static String Bai16(String str){
         String output="Kết quả là: \n";
         String[] arrStr = str.split("<br>");
         int n = Integer.parseInt(arrStr[1]);
+        int x = Integer.parseInt(arrStr[2]);
         int[] arr = new int[n];
         String temp="";
-        int max1 = 0,max2=0;
+        int max1 = 0,max2 = 0;
         for(int i=0; i<n; i++){
-            arr[i]=Integer.parseInt(arrStr[i+2]);
+            arr[i]=Integer.parseInt(arrStr[i+3]);
             if(arr[i]>max1){
                 max1=arr[i];
             }
-            if(arr[i]<max1&& arr[i]>max2){
+        }
+        for(int i=0; i<n; i++){
+            if(arr[i]<max1 && arr[i]>max2){
                 max2=arr[i];
                 temp=arr[i]+"["+i+"]";
             }
         }
         output+="\nSố lớn hai trong mảng là: "+temp;
+        Arrays.sort(arr);
+        output+="\nMảng sau khi sắp xếp là: ";
+        for(int i=0; i<n; i++){
+            output+=arr[i]+" ";
+        }
+        int[] b = new int[n+1];
+        for(int i=0; i<n; i++){
+           b[i]=arr[i];
+        }
+        b[n]=x;
+        Arrays.sort(b);
+        output+="\nMảng sau khi thêm x: ";
+        for(int i=0; i<n; i++){
+            output+=b[i]+" ";
+        }
         
         return output;
     }
@@ -435,6 +515,12 @@ public class Server {
             output=Bai15(str);
         }else if(arrStr[0].equals("16")){
             output=Bai16(str);
+        }else if(arrStr[0].equals("17")){
+            output=Bai17(str);
+        }else if(arrStr[0].equals("18")){
+            output=Bai18(str);
+        }else if(arrStr[0].equals("19")){
+            output=Bai19(str);
         }
         
             

@@ -17,18 +17,60 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
+        public static String Bai20() throws IOException{
+//          Bài 20: Viết chương trình liệt kê tất cả các hoán vị của 1, 2, .., n. 
+            String str="";
+            System.out.println("Nhập n: ");
+            str+="11<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
+         public static String Bai19() throws IOException{
+//        Bài 19: Viết chương trình thực hiện nhập một xâu họ tên theo cấu trúc: họ...đệm...tên; chuyển xâu đó sang biểu diễn theo cấu trúc tên…họ…đệm.
+
+            String str="";
+            str+="19<br>";
+            System.out.println("Nhập chuỗi: ");
+            str+=Input.input_String()+"<br>";
+            
+            return str;
+        }
+        public static String Bai18() throws IOException{
+//        Bài 18: Viết chương trình thực hiện nhập một xâu ký tự và tìm từ dài nhất trong xâu đó. Từ đó xuất hiện ở vị trí nào? (Chú ý. nếu có nhiều từ có độ dài giống nhau thì chọn từ đầu tiên tìm thấy).
+
+            String str="";
+            str+="18<br>";
+            System.out.println("Nhập chuỗi: ");
+            str+=Input.input_String()+"<br>";
+            
+            return str;
+        }
+        public static String Bai17() throws IOException{
+//        Bài 17: Viết chương trình thực hiện chuẩn hoá một xâu ký tự nhập từ bàn phím (loại bỏ các dấu cách thừa, chuyển ký tự đầu mỗi từ thành chữ hoa, các ký tự khác thành chữ thường)
+
+            String str="";
+            str+="17<br>";
+            System.out.println("Nhập chuỗi: ");
+            str+=Input.input_String()+"<br>";
+            
+            return str;
+        }
         public static String Bai16() throws IOException{
 //        Bài 16: Viết chương trình nhập vào vào mảng A có n phần tử, các phần tử là những số nguyên lớn hơn 0 và nhỏ hơn 100 được nhập vào từ bàn phím. Thực hiện các chức năng sau:
 //        Tìm phần tử lớn nhất và lớn thứ 2 trong mảng cùng chỉ số của các số đó.
 //        Sắp xếp mảng theo thứ tự giảm dần.
 //        Nhập một số nguyên x và chèn x vào mảng A sao cho vẫn đảm bảo tính sắp xếp giảm dần.
-        
+       
 
             String str="";
             str+="16<br>";
             System.out.println("Nhập số phần tử: ");
             int n=Input.input_int();
             str+=n+"<br>";
+            System.out.println("Nhập số x: ");
+            int x=Input.input_int();
+            str+=x+"<br>";
             for(int i=0; i<n ;i++){
                 str+=Input.input_int()+"<br>";
             }
@@ -218,6 +260,6 @@ public class Client {
             return output;
         }
         public static void main(String[] args) throws IOException {
-            System.out.println(TransferDataTCP(Bai16())); 
+            System.out.println(TransferDataTCP(Bai19())); 
         }
 }
