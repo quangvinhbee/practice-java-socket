@@ -2,7 +2,11 @@ package TCP;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import static java.lang.Math.sqrt;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,6 +17,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.stream.Stream;
+import static jdk.nashorn.internal.objects.ArrayBufferView.buffer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -46,6 +51,37 @@ public class Server {
         } else {
             return false;
         }
+    }
+
+    public static String Bai23(String str) throws IOException {
+        String output = "Kết quả là: ";
+        String[] arrStr = str.split("<br>");
+        output += "Copy file thành công";
+        InputStream is = null;
+        OutputStream os = null;
+        String src = "";
+        String dest = "";
+        if (arrStr[1].equals("upload.txt")) {
+            src = "E:\\client\\"+arrStr[1];
+            dest = "E:\\server";
+        }else{
+            dest = "E:\\client\\"+arrStr[1];
+            src = "E:\\server";
+        }
+        try {
+            is = new FileInputStream(src);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        }catch(Exception e){
+            output = "Kết quả là: Copy file thất bại";
+            System.out.println(e);
+        }
+
+        return output;
     }
 
     public static String Bai22(String str) {
@@ -587,7 +623,7 @@ public class Server {
         return temp;
     }
 
-    public static String Proccess(String str) {
+    public static String Proccess(String str) throws IOException {
         String output = "";
         String[] arrStr = str.split("<br>");
         if (arrStr[0].equals("1")) {
@@ -630,8 +666,10 @@ public class Server {
             output = Bai19(str);
         } else if (arrStr[0].equals("20")) {
             output = Bai20(str);
-        }else if (arrStr[0].equals("22")) {
+        } else if (arrStr[0].equals("22")) {
             output = Bai22(str);
+        }else if (arrStr[0].equals("23")) {
+            output = Bai23(str);
         }
 
         return output;

@@ -17,6 +17,16 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
+        public static String Bai23() throws IOException{
+//      Bài 22: Viết chương trình client/server copy tất cả file/folder qua mạng. Đích và nguồn chỉ định trực tiếp trong mã nguồn hoặc được nhập từ màn hình của client/server.
+
+            String str="";
+            System.out.println("Nhập tên file: ");
+            str+="23<br>";
+            str+=Input.input_String();
+            
+            return str;
+        }
         public static String Bai22() throws IOException{
 //      Bài 22: Viết chương trình client/server copy tất cả file/folder qua mạng. Đích và nguồn chỉ định trực tiếp trong mã nguồn hoặc được nhập từ màn hình của client/server.
 
@@ -292,6 +302,6 @@ public class Client {
             return output;
         }
         public static void main(String[] args) throws IOException {
-            System.out.println(TransferDataTCP(Bai22())); 
+            System.out.println(TransferDataTCP(Bai23())); 
         }
 }
