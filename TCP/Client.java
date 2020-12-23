@@ -17,11 +17,43 @@ import java.util.logging.Logger;
  * @author lamqu
  */
 public class Client {
+        public static String Bai22() throws IOException{
+//      Bài 22: Viết chương trình client/server copy tất cả file/folder qua mạng. Đích và nguồn chỉ định trực tiếp trong mã nguồn hoặc được nhập từ màn hình của client/server.
+
+            String str="";
+            System.out.println("Nhập địa chỉ folder nguồn: ");
+            str+="22<br>";
+            str+=Input.input_String();
+            System.out.println("Nhập địa chỉ folder đích: ");
+            str+="<br>";
+            str+=Input.input_String();
+            
+            return str;
+        }
+        public static String Bai21() throws IOException{
+//        Bài 21: Viết chương trình client server qua giao thức TCP/UDP thực hiện xử lý nội dụng trong file:
+//        Client:
+//        - Tìm và đọc file từ 1 đường dẫn với tên file và đường dẫn được nhập trên màn hình, sau đó thực hiện một trong các yêu cầu: 
+//        +) Hiển thị các lựa chọn lên màn hình để người dùng lựa chọn nghiệp vụ trong file vừa đọc.
+//        +) Hiển thị nội dung trong file theo dạng cấu trúc đề thì lên màn hình và yêu cầu người dùng nhập đáp án gửi lên server xử lý và trả về đáp án đúng.
+//        +) Thực hiện trò chơi tìm đường đi ngắn nhất.
+//        +) Thực hiện xử lý mảng, ma trận trong file gửi lên server
+//        +) …
+//        Server:
+//        +) Nhận các yêu cầu từ client gửi lên theo từng bài và thực hiện trả kết quả về cho client.
+
+            String str="";
+            System.out.println("Nhập n: ");
+            str+="21<br>";
+            str+=Input.input_int();
+            
+            return str;
+        }
         public static String Bai20() throws IOException{
 //          Bài 20: Viết chương trình liệt kê tất cả các hoán vị của 1, 2, .., n. 
             String str="";
             System.out.println("Nhập n: ");
-            str+="11<br>";
+            str+="20<br>";
             str+=Input.input_int();
             
             return str;
@@ -260,6 +292,6 @@ public class Client {
             return output;
         }
         public static void main(String[] args) throws IOException {
-            System.out.println(TransferDataTCP(Bai19())); 
+            System.out.println(TransferDataTCP(Bai22())); 
         }
 }
