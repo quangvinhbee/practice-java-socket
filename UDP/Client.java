@@ -9,7 +9,12 @@ import TCP.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -288,21 +293,25 @@ public class Client {
             str="1<br>"+n+"<br>"+coso;
             return str;
         }
-        public static String TransferDataUDP(String str){
+        public static String TransferDataUDP(String str) throws SocketException, UnknownHostException, IOException{
             Socket client;
             String output="";
-            try {
-                client = new Socket("localhost", 1234);
-                DataInputStream dis = new DataInputStream(client.getInputStream());
-                DataOutputStream dos = new DataOutputStream(client.getOutputStream());
-                dos.writeUTF(str);//send Dta
-                output= dis.readUTF();
-            } catch (IOException ex) {
-                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            DatagramSocket socket = new DatagramSocket();
+            //send data
+            byte[] buff = str.getBytes();
+            InetAddress remote = InetAddress.getByName("localhost");
+            DatagramPacket packet = new DatagramPacket(buff, buff.length, remote, 12344);
+            socket.send(packet);
+            //recieve
+            byte[] buff1 = new byte[1024];
+            DatagramPacket receivefromServer = new DatagramPacket(buff1, 1024);
+            socket.receive(receivefromServer);
+            byte[] receiveData = receivefromServer.getData();
+            String receiveString = new String(receiveData, 0, receivefromServer.getLength(), "UTF-8");
+            output = receiveString;
             return output;
         }
         public static void main(String[] args) throws IOException {
-            System.out.println(TransferDataUDP(Bai23())); 
+            System.out.println(TransferDataUDP(Bai20())); 
         }
 }

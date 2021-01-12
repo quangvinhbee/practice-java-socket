@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import static java.lang.Math.sqrt;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
@@ -57,16 +60,19 @@ public class Server {
     public static String Bai23(String str) throws IOException {
         String output = "Kết quả là: ";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         output += "Copy file thành công";
         InputStream is = null;
         OutputStream os = null;
         String src = "";
         String dest = "";
         if (arrStr[1].equals("upload.txt")) {
-            src = "E:\\client\\"+arrStr[1];
+            src = "E:\\client\\" + arrStr[1];
             dest = "E:\\server";
-        }else{
-            dest = "E:\\client\\"+arrStr[1];
+        } else {
+            dest = "E:\\client\\" + arrStr[1];
             src = "E:\\server";
         }
         try {
@@ -77,7 +83,7 @@ public class Server {
             while ((length = is.read(buffer)) > 0) {
                 os.write(buffer, 0, length);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             output = "Kết quả là: Copy file thất bại";
             System.out.println(e);
         }
@@ -86,8 +92,12 @@ public class Server {
     }
 
     public static String Bai22(String str) {
+        
         String output = "Kết quả là: ";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         output += "Copy file thành công";
         try {
             // source & destination directories
@@ -120,6 +130,10 @@ public class Server {
     public static String Bai20(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
+        
         int n = Integer.parseInt(arrStr[1]);
         // khoi tao mang gom n phan tu
         int[] mang = new int[n];
@@ -170,6 +184,9 @@ public class Server {
     public static String Bai19(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         StringTokenizer strToken = new StringTokenizer(arrStr[1], " ,\t,\r");
         String ho = strToken.nextToken();
         String hoDem = strToken.nextToken();
@@ -182,6 +199,9 @@ public class Server {
     public static String Bai18(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         StringTokenizer strToken = new StringTokenizer(arrStr[1], " ,\t,\r");
         int Max, i = 1, lengthStr;
         Max = strToken.nextToken().length();
@@ -203,6 +223,9 @@ public class Server {
     public static String Bai17(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         for (int i = 0; i < arrStr[1].length() - 1;) {
             if (arrStr[1].charAt(i) == arrStr[1].charAt(i + 1) && arrStr[1].charAt(i) == ' ') {
                 arrStr[1] = arrStr[1].substring(0, i) + arrStr[1].substring(i + 1);
@@ -233,6 +256,9 @@ public class Server {
     public static String Bai16(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int x = Integer.parseInt(arrStr[2]);
         int[] arr = new int[n];
@@ -273,6 +299,9 @@ public class Server {
     public static String Bai15(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int m = Integer.parseInt(arrStr[2]);
         int[][] arr = new int[n][m];
@@ -323,6 +352,9 @@ public class Server {
     public static String Bai14(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         output += "Số nguyên tố nhỏ hơn n là: ";
         int count = 0;
@@ -350,6 +382,9 @@ public class Server {
     public static String Bai13(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         output += "Ước của n là: ";
         int count = 0;
@@ -372,6 +407,9 @@ public class Server {
     public static String Bai12(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int m = n;
         int total = 0;
@@ -406,6 +444,9 @@ public class Server {
     public static String Bai11(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int a0 = 0, a1 = 1, a2 = 1;
         while (a2 < n) {
@@ -424,6 +465,9 @@ public class Server {
     public static String Bai10(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int s = Integer.parseInt(arrStr[1]);
         for (int i = 10000; i < 99999; i++) {
             if (CheckNT(i)) {
@@ -445,6 +489,9 @@ public class Server {
     public static String Bai9(String str) {
         String output = "Kết quả là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int count = 0;
         for (int i = 0; i < arrStr[1].length() - 1;) {
             if (arrStr[1].charAt(i) == arrStr[1].charAt(i + 1) && arrStr[1].charAt(i) == ' ') {
@@ -466,6 +513,9 @@ public class Server {
     public static String Bai8(String str) {
         String output = "Các phần tử là: \n";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int[] a = new int[n];
         int[] b = new int[1000];
@@ -492,6 +542,9 @@ public class Server {
     public static String Bai7(String str) {
         String output = "Các phần tử là: ";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int[] a = new int[n];
         for (int i = 2; i < arrStr.length; i++) {
@@ -518,6 +571,9 @@ public class Server {
     public static String Bai6(String str) {
         String output = "";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int[] a = new int[n];
         for (int i = 2; i < arrStr.length; i++) {
@@ -543,6 +599,9 @@ public class Server {
     public static String Bai5(String str) {
         String output = "";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         for (int i = 100000; i < 999999; i++) {
             if (CheckBai5(i)) {
                 output += i + " ";
@@ -555,6 +614,9 @@ public class Server {
     public static String Bai4(String str) {
         String output = "";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         if (n == 1) {
             output = "1";
@@ -570,6 +632,9 @@ public class Server {
     public static String Bai3(String str) {
         String output = "";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         if (n == 1) {
             output = "1";
@@ -595,6 +660,9 @@ public class Server {
     public static String Bai2(String str) {
         String output = "";
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int tong = 0;
         while (n > 0) {
@@ -608,6 +676,9 @@ public class Server {
         String output = "";
         String[] x = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"};
         String[] arrStr = str.split("<br>");
+        for(int i=0; i<arrStr.length; i++){
+            arrStr[i] = arrStr[i].trim();
+        }
         int n = Integer.parseInt(arrStr[1]);
         int base = Integer.parseInt(arrStr[2]);
         while (n > 0) {
@@ -669,7 +740,7 @@ public class Server {
             output = Bai20(str);
         } else if (arrStr[0].equals("22")) {
             output = Bai22(str);
-        }else if (arrStr[0].equals("23")) {
+        } else if (arrStr[0].equals("23")) {
             output = Bai23(str);
         }
 
@@ -677,17 +748,22 @@ public class Server {
     }
 
     public static void TransferDataUDP() throws IOException {
-        ServerSocket server = new ServerSocket(1234);
-        System.out.println("Server đã sẵn sàng");
-        while (true) {
-            Socket socket = server.accept();
-
-            DataInputStream dis = new DataInputStream(socket.getInputStream());
-            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-
-            String input = dis.readUTF();
-            dos.writeUTF(Proccess(input));
-        }
+        //recieve data
+        DatagramSocket socket = new DatagramSocket(12344);
+        System.out.println("Server aldready");
+        byte[] buff = new byte[1024];
+        DatagramPacket packetRecieve = new DatagramPacket(buff, buff.length);
+        byte[] receiveData = packetRecieve.getData();
+        socket.receive(packetRecieve);
+        String strRecieve = new String(receiveData, 0, receiveData.length, "UTF-8");
+        System.out.println(strRecieve);
+        //send data
+        String str = strRecieve;
+        byte[] sendClient = Proccess(str).getBytes();
+        int port = packetRecieve.getPort();
+        InetAddress add = packetRecieve.getAddress();
+        DatagramPacket toclient = new DatagramPacket(sendClient, sendClient.length, add, port);
+        socket.send(toclient);
     }
 
     public static void main(String[] args) throws IOException {
