@@ -6,16 +6,25 @@
 package Cau2_UDP;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  *
@@ -44,14 +53,15 @@ public class Server {
         return output;
     }
 //write read file
-    public static String readFile() {
+
+    public static String readFile(String filename) {
         String output = "";
         try {
-            File myObj = new File("E:\\DeThi.txt");
+            File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                output+=data+"<br>";
+                output += data + "<br>";
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -61,7 +71,7 @@ public class Server {
 
         return output;
     }
-    
+
     public static void CreateFile(String filename) {
         try {
             File myObj = new File(filename);
@@ -76,7 +86,7 @@ public class Server {
         }
     }
 
-    public static void WriteFile(String str,String address) {
+    public static void WriteFile(String str, String address) {
         try {
             FileWriter myWriter = new FileWriter(address);
             myWriter.write(str);
@@ -87,11 +97,30 @@ public class Server {
             e.printStackTrace();
         }
     }
-    public static void DeleteFile(String filename){
-        
+
+    public static void DeleteFile(String filename) {
+        File myObj = new File(filename);
+        if (myObj.delete()) {
+            System.out.println("Deleted the folder: " + myObj.getName());
+        } else {
+            System.out.println("Failed to delete the folder.");
+        }
     }
-    public static void CopyFile(String add1, String add2, String filename){
-        
+
+    public static void CopyFile(String add1, String add2, String filename) {
+        String src = add1+"\\"+filename;
+        String dest = add2;
+        try {
+            InputStream is = new FileInputStream(src);
+            OutputStream os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     public static String Process(String str) {
@@ -112,12 +141,13 @@ public class Server {
             }
         }
         output += "\nTrung binh diem cua lop do la: " + Float.parseFloat(df.format(total / n));
-        WriteFile(output,"E:\\DeThi1.txt");
+        WriteFile(output, "E:\\DeThi1.txt");
         return output;
     }
 
     public static void main(String[] args) throws SocketException, IOException {
         DatagramSocket ds = new DatagramSocket(1234);
-        sendtoClient(ds, Process(receivefromClient(ds)));
+        //sendtoClient(ds, Process(receivefromClient(ds)));
+        CopyFile("E:\\client","\\","DeThi1.txt");
     }
 }
