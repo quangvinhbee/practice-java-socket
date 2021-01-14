@@ -5,18 +5,39 @@
  */
 package Cau2_UDP;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 /**
  *
  * @author lamqu
  */
 public class Client {
+
+    public static String readFile() {
+        String output = "";
+        try {
+            File myObj = new File("E:\\DeThi.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                output+=data+"<br>";
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Lỗi đọc file.");
+            e.printStackTrace();
+        }
+
+        return output;
+    }
 
     public static void sendtoServer(DatagramSocket ds, String str) throws UnknownHostException, IOException {
         byte[] buff = str.getBytes();
@@ -37,7 +58,7 @@ public class Client {
 
     public static void main(String[] args) throws SocketException, IOException {
         DatagramSocket ds = new DatagramSocket();
-        sendtoServer(ds, "Gui tu client");
+        sendtoServer(ds,readFile());
         System.out.println(receivefromServer(ds));
     }
 }
