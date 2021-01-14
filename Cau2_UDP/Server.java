@@ -6,6 +6,7 @@
 package Cau2_UDP;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -14,6 +15,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 /**
  *
@@ -41,7 +43,25 @@ public class Server {
         output = (new String(receiveData, 0, receiveData.length, "UTF-8")).trim();
         return output;
     }
+//write read file
+    public static String readFile() {
+        String output = "";
+        try {
+            File myObj = new File("E:\\DeThi.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                output+=data+"<br>";
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Lỗi đọc file.");
+            e.printStackTrace();
+        }
 
+        return output;
+    }
+    
     public static void CreateFile(String filename) {
         try {
             File myObj = new File(filename);
@@ -67,7 +87,10 @@ public class Server {
             e.printStackTrace();
         }
     }
-    public static void CopyFile(){
+    public static void DeleteFile(String filename){
+        
+    }
+    public static void CopyFile(String add1, String add2, String filename){
         
     }
 
