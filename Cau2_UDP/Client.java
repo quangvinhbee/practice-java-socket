@@ -20,7 +20,8 @@ import java.util.Scanner;
  * @author lamqu
  */
 public class Client {
-
+    
+    
     public static String readFile() {
         String output = "";
         try {

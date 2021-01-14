@@ -5,6 +5,8 @@
  */
 package Cau2_UDP;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -40,6 +42,35 @@ public class Server {
         return output;
     }
 
+    public static void CreateFile(String filename) {
+        try {
+            File myObj = new File(filename);
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public static void WriteFile(String str,String address) {
+        try {
+            FileWriter myWriter = new FileWriter(address);
+            myWriter.write(str);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+    public static void CopyFile(){
+        
+    }
+
     public static String Process(String str) {
         String output = "";
         float total = 0;
@@ -57,8 +88,8 @@ public class Server {
                 n++;
             }
         }
-        output+="\nTrung binh diem cua lop do la: "+Float.parseFloat(df.format(total/n));
-
+        output += "\nTrung binh diem cua lop do la: " + Float.parseFloat(df.format(total / n));
+        WriteFile(output,"E:\\DeThi1.txt");
         return output;
     }
 
